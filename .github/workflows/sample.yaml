@@ -1,17 +1,19 @@
 name: Shell Commands
 
-# on: [push]
+on: [push]
 
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
     steps:
       - name: echo a string
-        run: echo "teste sete"
+        run: echo "Teste Sete"
+
       - name: multiline script
         run: |
           node -v
           npm -v
+
       - name: Python command
         shell: python
         run: |
@@ -25,6 +27,7 @@ jobs:
       - name: Directory powershell
         shell: powershell
         run: Get-Location
+
       - name: Directory Bash
         shell: bash
         run: pwd

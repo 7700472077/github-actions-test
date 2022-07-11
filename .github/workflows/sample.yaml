@@ -7,9 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo a string
-        run: eccho "teste sete"
+        run: echo "teste sete"
       - name: multiline script
         run: |
           node -v
           npm -v
-
+      - name: Python command
+        shell: python
+        run: |
+          import platform
+          print(platform.processor())

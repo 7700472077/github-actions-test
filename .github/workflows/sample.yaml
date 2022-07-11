@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo a string
-        run: echo "teste sete"
+        run: eccho "teste sete"
       - name: multiline script
         run: |
           node -v
           npm -v
-          
+

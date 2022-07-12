@@ -1,13 +1,32 @@
 name: Actions Workflow
-
 on:
-  repository_dispatch: 
-    types: [build]
+  push:    
+    branches:
+      - master
+      - 'feature/*' # matches feature/featA, feature/featB # doesn't match feature/feat/a
+      - 'feature/**' ## matches any string
+      - '!feature/featC' # ignore this branch - should be put after the patterns
+    # branches-ignore: ## to ignore some branches ## is not possible to use branches and branches-ignore
+    # - hotfix
+    tags:
+      - "v1.*"
+    # tags-ignore: # the same case of branches/branches-ignore
+    paths:
+      - '**.js' # any change in .js scripts will trigger the workflow
+      - '!filename.js' # runs for all java scripts, execept for this filename.js
+    # paths-ignore: # the same case of branches-ignore/tags-ignore
+    # - 'docs/**'    
+
+  # repository_dispatch:
+  #   types: [build]
+  ## executar workflow apartir de eventos externos, exemplo POSTMAN > https://api.github.com/repos/7700472077/github-actions-test/dispatches  
+  
   # schedule:
-  #   - cron: "0/5 * * * *" # a cada 5 minutos
+  #   - cron: "0/5 * * * *" # a cada 5 minutos | eh o minimo permitido
+  
   # push:
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+  # pull_request:
+  #   types: [closed, assigned, opened, reopened]
 
 jobs:
   run-github-actions:

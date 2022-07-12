@@ -1,6 +1,11 @@
 name: Shell Commands
 
-on: [pull_request]
+on:
+  # schedule:
+  #   - cron: "0/5 * * * *" # a cada 5 minutos
+  push:
+  pull_request:
+    types: [closed, assigned, opened, reopened]
 
 jobs:
   run-shell-command:

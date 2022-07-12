@@ -3,7 +3,7 @@ name: Shell Commands
 on:
   # schedule:
   #   - cron: "0/5 * * * *" # a cada 5 minutos
-  push:
+  # push:
   pull_request:
     types: [closed, assigned, opened, reopened]
 

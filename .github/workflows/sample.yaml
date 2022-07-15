@@ -10,17 +10,17 @@ on:
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     steps:
       - name: echo a string
-        run: echo "Teste Sete"
-        continue-on-error: true ## vai continuar mesmo se um step falhar
+        run: eccho "Teste Sete"
+        continue-on-error: true ## vai continuar mesmo se o step anterior falhar
 
       - name: multiline script
         run: |
           node -v
           npm -v
-          eccho "nada"
-          
+
       - name: Python command
         shell: python
         run: |

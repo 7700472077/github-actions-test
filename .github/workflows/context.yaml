@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Dump GitHub context
         id: github_context_step
-        run: echo '${{ toJSON(secrets) }}'
+        run: echo '${{ toJSON(runner) }}'
 
       # - name: Dump job context
       #   id: job_context_step

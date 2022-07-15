@@ -3,9 +3,9 @@ name: Shell Commands
 on:
   # schedule:
   #   - cron: "0/5 * * * *" # a cada 5 minutos
-  # push:
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+  push:
+  # pull_request:
+  #   types: [closed, assigned, opened, reopened]
 
 jobs:
   run-shell-command:
@@ -13,12 +13,14 @@ jobs:
     steps:
       - name: echo a string
         run: echo "Teste Sete"
+        continue-on-error: true ## vai continuar mesmo se um step falhar
 
       - name: multiline script
         run: |
           node -v
           npm -v
-
+          eccho "nada"
+          
       - name: Python command
         shell: python
         run: |

@@ -23,3 +23,6 @@ jobs:
 
       - name: Dump matrix context
         run: echo '${{ toJSON(matrix) }}'
+        
+      - name: Teste
+        run: echo "${{ steps.github_context_step.outputs.retention_days }}"

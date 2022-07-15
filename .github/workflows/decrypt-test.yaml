@@ -1,5 +1,6 @@
 name: Decrypt Test
-on: push
+# on: push
+on: pull_request
 jobs:
   decrypt:
     runs-on: ubuntu-latest

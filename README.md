@@ -5,3 +5,5 @@ https://docs.github.com/en/actions/security-guides/automatic-token-authenticatio
 
 https://gnupg.org/download/index.html
 https://docs.github.com/en/actions/security-guides/encrypted-secrets
+
+https://docs.github.com/en/actions/learn-github-actions/contexts

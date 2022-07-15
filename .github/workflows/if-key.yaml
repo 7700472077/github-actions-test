@@ -4,7 +4,7 @@ on: [push, pull_request]
 jobs:
   functions:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == push }}
+    if: github.event_name == 'push'
     steps:
       - name: teste 1
         run: |

@@ -18,4 +18,4 @@ jobs:
       - name: teste 3
         if: always()
         run: |
-          echo ${{ github.repository }}
+          echo ${{ github.actor }}

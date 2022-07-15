@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Dump GitHub context
         id: github_context_step
-        run: echo '${{ toJSON(github) }}'
+        run: echo '${{ toJSON(github.repository) }}'
 
       # - name: Dump job context
       #   id: job_context_step
@@ -24,6 +24,3 @@ jobs:
 
       # - name: Dump matrix context
       #   run: echo '${{ toJSON(matrix) }}'
-
-      # - name: Teste
-      #   run: echo "${{ steps.job_context_step.outputs.status }}"

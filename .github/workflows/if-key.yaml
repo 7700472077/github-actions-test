@@ -1,0 +1,21 @@
+name: I
+on: [push, pull_request]
+
+jobs:
+  functions:
+    runs-on: ubuntu-latest
+    if: github.event_name == push
+    steps:
+      - name: teste 1
+        run: |
+          eccho ${{ github.actor }}
+
+      - name: teste 2
+        if: failure()
+        run: |
+          echo ${{ github.repository }}
+          
+      - name: teste 3
+        if: always()
+        run: |
+          echo ${{ github.repository }}

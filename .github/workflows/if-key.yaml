@@ -13,7 +13,7 @@ jobs:
           echo ${{ github.actor }}
 
       - name: teste 1
-        # continue-on-error: true # a nivel de step - caso step falhar, prossegue para o prox step mesmo com a falha anterior.
+        continue-on-error: true # a nivel de step - caso step falhar, prossegue para o prox step mesmo com a falha anterior.
         run: |
           eccho ${{ github.actor }}
 

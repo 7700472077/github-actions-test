@@ -6,9 +6,10 @@ jobs:
   functions:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
-    continue-on-error: true ## vai executar
+    # continue-on-error: true ## a nivel de job, vai dar skip em todos steps após um step com falha (completar mesmo com erro)
     steps:
       - name: teste 1
+        continue-on-error: true # a nivel de step,
         run: |
           eccho ${{ github.actor }}
 

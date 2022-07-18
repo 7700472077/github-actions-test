@@ -26,7 +26,8 @@ jobs:
         # continue-on-error: true # a nivel de step - ignora falha, exibe erro/log do step e segue para o prox step
             ## - finaliza "verde" se for o último step ou não tiver mais steps com falha.
         run: |
-          echo ${{ github.actor }}
+          echo "teste" > $HOME/teste_file.txt
+          cat $HOME/teste_file.txt
 
       - name: Only on Push - step 3 
         run: |

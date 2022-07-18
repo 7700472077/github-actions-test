@@ -5,7 +5,7 @@ jobs:
   functions:
     runs-on: ubuntu-latest
     # if: failure() ## a nivel de job - nem executa o job
-    # continue-on-error: true ## a nivel de job - vai dar skip em todos steps após um step com falha (roda job inteiro mesmo com erro).
+    continue-on-error: true ## a nivel de job - exibe o erro do step com falha e dá skip em todos os steps = finaliza "verde".
     steps:
       - name: Only on Push - step 1
         if: github.event_name == 'push' ## a nivel de step
@@ -14,7 +14,7 @@ jobs:
 
       - name: Only on Push - step 2 
         # if: github.event_name == 'push' ## a nivel de step
-        if: failure() ## vai executar apenas esse step
+        # if: failure() ## nao despeja o erro, basicamente dá um skip direto no step com falha e segue para o proximo
         # continue-on-error: true # a nivel de step - caso step falhar, prossegue para o prox step mesmo com a falha anterior.
         run: |
           eccho ${{ github.actor }}

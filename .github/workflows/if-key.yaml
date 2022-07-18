@@ -1,33 +1,35 @@
 name: Conditions
-# on: [push, pull_request]
-on: push
+on: [push, pull_request]
 
 jobs:
   functions:
     runs-on: ubuntu-latest
-    # if: github.event_name == 'push'
-    if: failure()
+    # if: failure() ## a nivel de job - nem executa o job
     # continue-on-error: true ## a nivel de job - vai dar skip em todos steps após um step com falha (roda job inteiro mesmo com erro).
     steps:
-      - name: teste 0
+      - name: Only on Push - step 1
+        if: github.event_name == 'push' ## a nivel de step
         run: |
           echo ${{ github.actor }}
 
-      - name: teste 1
+      - name: Only on Push - step 2 
+        # if: github.event_name == 'push' ## a nivel de step
+        if: github.event_name == 'push' && failure() ## vai executar apenas esse step
         # continue-on-error: true # a nivel de step - caso step falhar, prossegue para o prox step mesmo com a falha anterior.
         run: |
           eccho ${{ github.actor }}
 
-      - name: teste 2
+      - name: Only on Pull Request - step 1
+        if: github.event_name == 'pull_request' ## a nivel de step
         run: |
           echo ${{ github.actor }}
 
-      - name: teste 3
-        # if: failure() ## vai executar apenas esse step, mesmo que o anterior falhe
+      - name: Only on Pull Request - step 2
+        if: github.event_name == 'pull_request' ## a nivel de step
         run: |
           eccho ${{ github.repository }}
           
-      - name: teste 4
+      - name: Any event
         # if: always()
         run: |
           echo ${{ github.actor }}

@@ -15,7 +15,8 @@ jobs:
 
       - name: Only on Push - step 2 
         # if: github.event_name == 'push' ## a nivel de step
-        if: failure() ## nao despeja o erro, basicamente dá um skip direto no step com falha e segue para o proximo
+        # if: failure() ## nao despeja o erro, basicamente dá um skip direto no step com falha e segue para o proximo
+        if: always()
         # continue-on-error: true # a nivel de step - caso step falhar, prossegue para o prox step mesmo com a falha anterior.
         run: |
           eccho ${{ github.actor }}

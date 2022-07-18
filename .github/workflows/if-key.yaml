@@ -16,8 +16,8 @@ jobs:
       - name: Only on Push - step 2 
         # if: github.event_name == 'push' ## a nivel de step
         # if: failure() ## a nivel de step - nao exibe erro/log = SKIP e segue para o proximo step = finaliza "vermelho" (se outro step falhar)
-        if: always() ## a nivel de step - exibe erro/log do step e dá skip nos demais - finaliza "vermelho".
-        # continue-on-error: true # a nivel de step - ignora falha, exibe erro do step e prossegue para o prox step 
+        # if: always() ## a nivel de step - exibe erro/log do step e dá skip nos demais - finaliza "vermelho". => condição default
+        continue-on-error: true # a nivel de step - ignora falha, exibe erro do step e prossegue para o prox step 
             ## - finaliza "verde" se outro step sem essa condição falhar.
         run: |
           eccho ${{ github.actor }}

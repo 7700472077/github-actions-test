@@ -9,12 +9,13 @@ jobs:
     # continue-on-error: false ## a nivel de job - exibe o erro do step com falha e dá skip em todos os steps = finaliza "vermelho"/ default.
     steps:
       - name: Only on Push - step 1
-        # if: github.event_name == 'push' ## a nivel de step - executa o step se receber a condição/evento esperado
+        if: github.event_name == 'push' ## a nivel de step - executa o step se receber a condição/evento esperado
         run: |
-          echo ${{ github.actor }}
+          eccho ${{ github.actor }}
 
       - name: Only on Push - step 2 
-        # if: github.event_name == 'push' ## a nivel de step
+        # if: github.event_name == 'push' ## a nivel de step 
+        ## NAO PODE HAVER 2 "if" dentro do mesmo step
         if: failure()
         ## Se o step anterior falhar ou não (erro/log será exibido) e segue para o step contendo o "failure()"
         ## Se o step atual contendo "failure()" tbm falhar, será marcado como OK apesar do erro/log e segue para o próximo

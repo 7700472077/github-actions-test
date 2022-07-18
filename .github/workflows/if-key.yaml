@@ -27,8 +27,8 @@ jobs:
             ## - finaliza "verde" se for o último step ou não tiver mais steps com falha.
         run: |
           echo "teste" > $HOME/teste_file.txt
-          cat $HOME/teste_file.txt
-
+        
       - name: Only on Push - step 3 
         run: |
           echo ${{ github.actor }}
+          cat $HOME/teste_file.txt

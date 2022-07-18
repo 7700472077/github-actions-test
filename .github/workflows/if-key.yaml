@@ -8,13 +8,14 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: teste 1
+        continue-on-error: true ## vai executar 
         run: |
           eccho ${{ github.actor }}
 
       - name: teste 2
-        if: failure()
+        # if: failure() ## vai executar apenas esse step, mesmo que o anterior falhe
         run: |
-          echo ${{ github.repository }}
+          eccho ${{ github.repository }}
           
       - name: teste 3
         # if: always()

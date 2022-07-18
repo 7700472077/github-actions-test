@@ -1,6 +1,6 @@
 name: Conditions
 # on: [push, pull_request]
-on: pull_request
+on: push
 
 jobs:
   functions:
@@ -17,6 +17,6 @@ jobs:
           echo ${{ github.repository }}
           
       - name: teste 3
-        if: always()
+        # if: always()
         run: |
           echo ${{ github.actor }}

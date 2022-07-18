@@ -15,18 +15,12 @@ jobs:
 
       - name: Only on Push - step 2 
         # if: github.event_name == 'push' ## a nivel de step
-        if: failure() ## a nivel de step - nao despeja o erro, dá skip direto no step com falha e segue para o proximo.
-        # if: always() ## a nivel de step - exibe erro do step e dá skip nos demais - finaliza "verde = complete".
+        if: failure() ## a nivel de step - nao exibe erro, dá skip direto no step com falha e segue para o proximo.
+        # if: always() ## a nivel de step - exibe erro do step e dá skip nos demais - finaliza "verde".
         # continue-on-error: true # a nivel de step - exibe do step erro e prossegue para o prox step mesmo com a falha.
         run: |
           eccho ${{ github.actor }}
 
-      - name: Only on Pull Request - step 1
-        if: github.event_name == 'pull_request' ## a nivel de step
+      - name: Only on Push - step 3 
         run: |
-          echo ${{ github.actor }}
-
-      - name: Only on Pull Request - step 2
-        if: github.event_name == 'pull_request' ## a nivel de step
-        run: |
-          eccho ${{ github.repository }}
+          eccho ${{ github.actor }}

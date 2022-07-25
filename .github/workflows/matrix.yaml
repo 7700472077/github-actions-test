@@ -9,7 +9,10 @@ jobs:
         include:
           - os: ubuntu-latest
             node_version: 8
-            is_ubuntu_8: "true"
+            is_node_8: "true" ## variável foi criada ao rodar no ubuntu-latest + node_version 8
+          - os: windows-latest
+            node_version: 10
+            is_node_10: "true"
         exclude:
           - os: ubuntu-latest ## nao vai rodar no ubuntu-latest com node_version 6
             node_version: 6
@@ -19,7 +22,8 @@ jobs:
       # max-parallel: 3 ## default eh rodar tudo em paralelo
     runs-on: ${{ matrix.os }}
     env: 
-      IS_UBUNTU_8: ${{ matrix.is_ubuntu_8 }}
+      IS_NODE_8: ${{ matrix.is_node_8 }}
+      IS_NODE_10: ${{ matrix.is_node_10 }}
     steps:
       - name: Log node version
         run: node -v
@@ -31,4 +35,5 @@ jobs:
       - name: Log node version
         run: |
           node -v
-          echo $IS_UBUNTU_8
+          echo $IS_NODE_8
+          echo $IS_NODE_10

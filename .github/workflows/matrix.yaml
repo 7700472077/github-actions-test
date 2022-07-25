@@ -6,6 +6,9 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest] ## vai rodar 2 x por conta do array
         node-version: [6,8,10] ## como existe +3 valores, ele vai rodar 6x = 2x3
+        include:
+          - macos: macos-latest
+            ubuntu: ubuntu-latest
       # fail-fast: true ## se uma execução do job falhar, vai parar tudo
       # max-parallel: 3 ## default eh rodar tudo em paralelo
     runs-on: ${{ matrix.os }}
@@ -18,13 +21,13 @@ jobs:
           node-version: ${{ matrix.node_version }}
       
       - name: Log node version Mac
-        if: ${{ matrix.os == macos-latest }}
+        if: ${{ matrix.macos == macos-latest }}
         run: |
           node -v
           hostname
 
       - name: Log node version Ubuntu
-        if: ${{ matrix.os == ubuntu-latest }}
+        if: ${{ matrix.ubuntu == ubuntu-latest }}
         run: |
           node -v
           hostname

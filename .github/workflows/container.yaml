@@ -34,4 +34,4 @@ jobs:
         uses: docker://technosophos/slack-notify
         env:
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-            SLACK_MESSAGE: "Vai carai"
+            SLACK_MESSAGE: "Vai carai, deu certo"

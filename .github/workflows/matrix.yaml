@@ -10,7 +10,7 @@ jobs:
           - os: ubuntu-latest
             node_version: 8
             is_node_8: "true" ## variável foi criada ao rodar no ubuntu-latest + node_version 8
-          - os: windows-latest
+          - os: macos-latest
             node_version: 10
             is_node_10: "true"
         exclude:

@@ -18,12 +18,11 @@ jobs:
       - name: Only on Push - step 2 
         # if: github.event_name == 'push' ## a nivel de step 
         ## NAO PODE HAVER 2 "if" dentro do mesmo step
-        if: failure()
-        ## Se o step anterior falhar (erro/log será exibido) e segue para o step contendo o "failure()"
+        # if: failure()
+        ## Se o step anterior falhar (erro/log será exibido) e segue para o step contendo o "failure()" e encerra nele.
         ## Se o step anterior der OK o step contendo o "failure()" não será executado.
-        ##       
 
-        # if: always() ## a nivel de step - exibe erro/log do step e dá skip nos demais - finaliza "vermelho". => condição default
+        if: always() ## a nivel de step - exibe erro/log do step e dá skip nos demais - finaliza "vermelho". => condição default
 
         # continue-on-error: true # a nivel de step - ignora falha, exibe erro/log do step e segue para o prox step
             ## - finaliza "verde" se for o último step ou não tiver mais steps com falha.

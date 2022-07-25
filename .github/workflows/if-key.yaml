@@ -12,6 +12,7 @@ jobs:
       - name: Only on Push - step 1
         # timeout-minutes:  5 ## tempo maximo que o step pode ser executado, caso precise disso
         if: github.event_name == 'push' ## a nivel de step - executa o step se receber a condição/evento esperado
+        continue-on-error: true # a nivel de step - ignora falha, exibe erro/log do step e segue para o prox step
         run: |
           eccho ${{ github.actor }}
 
@@ -23,10 +24,6 @@ jobs:
         ## Se o step anterior der OK o step contendo o "failure()" não será executado.
 
         # if: always() ## a nivel de step. Se o step anterior falhar (erro/log será exibido) e segue para o step contendo o "always()" e encerra nele => condição default
-
-        continue-on-error: true # a nivel de step - ignora falha, exibe erro/log do step e segue para o prox step
-
-            ## - finaliza "verde" se for o último step ou não tiver mais steps com falha.
         run: |
           echo "teste" > $HOME/teste_file.txt
         

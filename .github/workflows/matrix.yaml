@@ -4,11 +4,22 @@ jobs:
   example-matrix:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest] ## vai rodar 2 x por conta do array
-        node_version: [6, 8, 10] ## como existe +3 valores, ele vai rodar 6x = 2x3
+        os: [macos-latest, ubuntu-latest, windows-latest] ## vai rodar 3 x por conta do array
+        node_version: [6, 8, 10] ## como existe +3 valores, ele vai rodar 9x = 3x3
+        include:
+          - os: ubuntu-latest
+            node_version: 8
+            is_ubuntu_8: "true"
+        exclude:
+          - os: ubuntu-latest ## nao vai rodar no ubuntu-latest com node_version 6
+            node_version: 6
+          - os: macos-latest ## nao vai rodar no macos-latest com node_version 8
+            node_version: 8
       # fail-fast: true ## se uma execução do job falhar, vai parar tudo
       # max-parallel: 3 ## default eh rodar tudo em paralelo
     runs-on: ${{ matrix.os }}
+    env: 
+      IS_UBUNTU_8: ${{ matrix.is_ubuntu_8 }}
     steps:
       - name: Log node version
         run: node -v
@@ -20,3 +31,4 @@ jobs:
       - name: Log node version
         run: |
           node -v
+          echo $IS_UBUNTU_8

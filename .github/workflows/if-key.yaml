@@ -4,11 +4,13 @@ on: [push, pull_request]
 jobs:
   functions:
     runs-on: ubuntu-latest
+    # timeout-minutes:  5 ## tempo maximo que o job pode ser executado, caso precise disso
     # if: failure() ## a nivel de job - nem executa o job
     # continue-on-error: true ## a nivel de job - exibe o erro do step com falha e dá skip em todos os steps = finaliza "verde".
     # continue-on-error: false ## a nivel de job - exibe o erro do step com falha e dá skip em todos os steps = finaliza "vermelho"/ default.
     steps:
       - name: Only on Push - step 1
+        # timeout-minutes:  5 ## tempo maximo que o step pode ser executado, caso precise disso
         if: github.event_name == 'push' ## a nivel de step - executa o step se receber a condição/evento esperado
         run: |
           eccho ${{ github.actor }}

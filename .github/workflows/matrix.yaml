@@ -4,8 +4,8 @@ jobs:
   node-version:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest] ## vai rodar 3 x por conta do array
-        node-version: [6,8,10] ## como existe +3 valores, ele vai rodar 9x = 3x3
+        os: [macos-latest, ubuntu-latest] ## vai rodar 2 x por conta do array
+        node-version: [6,8,10] ## como existe +3 valores, ele vai rodar 6x = 2x3
       # fail-fast: true ## se uma execução do job falhar, vai parar tudo
       # max-parallel: 3 ## default eh rodar tudo em paralelo
     runs-on: ${{ matrix.os }}
@@ -17,5 +17,14 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       
-      - name: Log node version
-        run: node -v
+      - name: Log node version Mac
+        if: ${{ matrix.os == macos-latest }}
+        run: |
+          node -v
+          hostname
+
+      - name: Log node version Ubuntu
+        if: ${{ matrix.os == ubuntu-latest }}
+        run: |
+          node -v
+          hostname
